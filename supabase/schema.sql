@@ -33,6 +33,14 @@ create table if not exists public.ballots (
   votes jsonb not null default '{}'::jsonb,
   submitted_at timestamptz not null default now()
 );
+
+-- Recados individuais. O navegador nunca consulta esta tabela diretamente;
+-- a Edge Function devolve somente o recado da pessoa autenticada.
+create table if not exists public.student_messages (
+  student_id uuid primary key references public.students(id) on delete cascade,
+  message text not null,
+  updated_at timestamptz not null default now()
+);
 -- Migração segura da versão anterior, em que as cédulas ainda não tinham fase.
 alter table public.ballots add column if not exists phase text not null default 'general';
 do $$ begin
@@ -81,8 +89,10 @@ grant execute on function public.submit_anonymous_ballot(uuid, jsonb, text) to s
 alter table public.awards_config enable row level security;
 alter table public.students enable row level security;
 alter table public.ballots enable row level security;
+alter table public.student_messages enable row level security;
 
 revoke all on table public.awards_config from anon, authenticated;
 revoke all on table public.students from anon, authenticated;
 revoke all on table public.ballots from anon, authenticated;
+revoke all on table public.student_messages from anon, authenticated;
 -- Não crie políticas RLS públicas para essas tabelas. A Edge Function usa service_role.

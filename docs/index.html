@@ -59,6 +59,7 @@
     .side-title{align-items:flex-start}.pill{font-size:9px;letter-spacing:.12em;color:var(--gold);border:1px solid #5a501d;border-radius:2px;padding:6px 8px;white-space:nowrap}
     .feature{gap:12px;padding:14px 0;border-top:1px solid #303539}.feature .ico{width:35px;height:35px;border-radius:3px;background:var(--gold);color:#111315;font:700 13px 'Barlow Condensed',sans-serif;letter-spacing:.04em}.feature strong{font-size:13px;font-weight:700}.feature p{font-size:12px;color:#a7adb2;line-height:1.6}
     .dashboard{margin:25px 0 60px}.dash-head h2{font-size:32px}.dash-actions{gap:7px}
+    .personal-message{margin-top:16px;border-left:4px solid var(--gold);background:#191c1f}.personal-message h3{font-size:20px;margin:5px 0 8px}.personal-message p{color:#e4e6e7;font-size:14px;line-height:1.7;margin:0;white-space:pre-wrap;overflow-wrap:anywhere}
     .timer-panel{background:#1a1d20;border:1px solid #454a4f;border-left:4px solid var(--gold);border-radius:4px;padding:21px;margin:18px 0}.timer-panel h3{font-size:25px;letter-spacing:.005em}.timer-panel p{color:#aab0b4;font-size:12px}.timer{gap:6px}.timebox{min-width:60px;background:#101214;border:1px solid #3b4145;border-radius:3px;padding:10px 9px}.timebox strong{color:var(--gold);font:700 30px 'Barlow Condensed',sans-serif}.timebox span{font-size:9px;letter-spacing:.13em}
     .section-title{font-size:31px;letter-spacing:.005em;margin:29px 0 9px}.ballot-intro{font-size:13px;color:#a7adb2;line-height:1.7}.cat-grid{gap:10px}.cat{background:#191c1f;border:1px solid #353a3e;border-radius:4px;padding:15px}.cat-head{gap:10px;margin-bottom:12px}.cat-num{font:700 12px 'Barlow Condensed',sans-serif;color:#111315;background:var(--gold);border-radius:2px;padding:5px 7px}.cat h3{font-size:20px;line-height:1.06;margin:0 0 5px;font-weight:700}.cat p{font-size:11px;color:#a4aaaf;line-height:1.55}.cat select{border-radius:3px;padding:11px;background:#101214;color:var(--text);border:1px solid #444a4f;font:inherit;font-size:12px}.ballot-footer{margin-top:17px}.ballot-footer .button{min-width:190px}.ballot-footer small{font-size:11px;color:#a2a8ad}
     .stats-grid{gap:9px}.stat{background:#111315;border:1px solid #363b3f;border-radius:4px}.stat strong{font:700 31px 'Barlow Condensed',sans-serif;color:var(--gold)}.stat span{font-size:9px;letter-spacing:.11em}.tally-list{gap:10px}.tally-card{background:#121416;border:1px solid #33383c;border-radius:4px}.tally-card h3{font-size:19px}.tally-row{border-top:1px solid #292e32}.tally-row .count{color:var(--gold)}
@@ -101,18 +102,19 @@
         <div class="fine">A validação acontece no servidor. Os RAs não ficam no código público; a administração acompanha totais por categoria, não escolhas individuais.</div>
       </section>
       <aside class="panel">
-        <div class="side-title"><h2>Como funciona</h2><span class="pill">28 CATEGORIAS</span></div>
+        <div class="side-title"><h2>Como funciona</h2><span class="pill">21 CATEGORIAS</span></div>
         <p class="sub">Personalidade, inteligência, estilo e uma dose de polêmica. A resenha tem limite: nada de expor a intimidade dos colegas.</p>
-        <div class="feature"><div class="ico">01</div><div><strong>Radar da turma</strong><p>Fofoca, contexto, indiretas e quem sempre sabe das novidades.</p></div></div>
-        <div class="feature"><div class="ico">02</div><div><strong>Personalidade e presença</strong><p>Carisma, postura, respostas rápidas e estilo próprio.</p></div></div>
-        <div class="feature"><div class="ico">03</div><div><strong>Inteligência e estilo</strong><p>Reconhecimento para quem se destaca dentro e fora da sala.</p></div></div>
+        <div class="feature"><div class="ico">01</div><div><strong>Polêmicas & sem filtro</strong><p>Fofocas, opiniões fortes, drama e histórias que rendem conversa.</p></div></div>
+        <div class="feature"><div class="ico">02</div><div><strong>Vida social & comportamento</strong><p>Jeitos de conviver, distrações, celular e organização da turma.</p></div></div>
+        <div class="feature"><div class="ico">03</div><div><strong>Clássicos & momentos memoráveis</strong><p>Estilo, situações icônicas, sobrevivência nas avaliações e sorte.</p></div></div>
         <div class="feature"><div class="ico">04</div><div><strong>Apuração e divulgação</strong><p>10 dias de votação geral, 10 dias de final e resultados ao encerrar o prazo.</p></div></div>
-        <div class="notice">Na moral: vote com critério. Nada de expor segredos, atacar colegas ou transformar aparência física em ranking.</div>
+        <div class="notice">Na moral: é para brincar, não humilhar. Vote com respeito e não use a votação para atacar ou expor colegas.</div>
       </aside>
     </main>
 
     <main id="dashboardView" class="dashboard hidden">
       <div class="dash-head"><div><div class="eyebrow">ÁREA DO PARTICIPANTE</div><h2 id="welcomeTitle">Bem-vindo(a)!</h2><div id="statusLine" class="sub" style="margin:7px 0 0">Conectando ao sistema...</div></div><div class="dash-actions"><button id="refreshButton" class="button secondary">Atualizar dados</button><button id="logoutButton" class="button danger">Sair</button></div></div>
+      <section id="personalMessageCard" class="panel personal-message hidden" aria-live="polite"><div class="eyebrow">UM RECADO PRA VOCÊ</div><h3>Mensagem individual</h3><p id="personalMessageText"></p></section>
       <section class="timer-panel"><div><h3 id="timerTitle">A contagem regressiva</h3><p id="timerDescription">Os resultados serão liberados depois de 20 dias.</p><div id="adminStartWrap" class="hidden" style="margin-top:14px"><button id="startCountdownButton" class="button primary" style="width:auto;margin:0">Abrir votação · iniciar prazo</button><p class="fine">A contagem começa uma única vez. O horário é registrado no servidor e vale para toda a turma.</p></div></div><div class="timer" id="timer"><div class="timebox"><strong id="days">20</strong><span>Dias</span></div><div class="timebox"><strong id="hours">00</strong><span>Horas</span></div><div class="timebox"><strong id="minutes">00</strong><span>Minutos</span></div><div class="timebox"><strong id="seconds">00</strong><span>Segundos</span></div></div></section>
       <section id="votingSection" class="hidden"><h2 class="section-title" id="ballotTitle">Votação geral</h2><p class="ballot-intro" id="ballotIntro">Na primeira fase, indique uma pessoa por categoria. Você pode deixar categorias em branco. A cédula desta fase não pode ser alterada depois do envio.</p><form id="ballotForm"><div id="categoriesGrid" class="cat-grid"></div><div class="ballot-footer"><button class="button primary" id="submitBallotButton" type="submit" style="width:auto;margin:0">Enviar cédula</button><small>Confira as escolhas antes de enviar. O envio é definitivo.</small></div><div id="voteMessage" aria-live="polite"></div></form></section>
       <section id="alreadyVoted" class="panel hidden"><h2>Cédula registrada</h2><p id="alreadyVotedText" class="sub" style="margin-bottom:0">Sua cédula desta fase foi registrada. Você poderá participar da próxima fase quando ela abrir.</p></section>
@@ -127,34 +129,27 @@
   (() => {
     'use strict';
     const categories = [
-      {id:'reporter',name:'Central da fofoca',desc:'Sempre sabe o que está rolando antes de virar assunto.',group:'Radar da turma'},
-      {id:'sherlock',name:'Detetive da turma',desc:'Percebe detalhes que quase todo mundo deixa passar.',group:'Radar da turma'},
-      {id:'tenho_uma_coisa',name:'Sempre tem uma informação',desc:'Quase sempre chega com uma novidade na mão.',group:'Radar da turma'},
-      {id:'detetive_indiretas',name:'Detetive de indiretas',desc:'Lê o contexto e percebe quando tem recado nas entrelinhas.',group:'Radar da turma'},
-      {id:'virar_assunto',name:'Mais provável de virar assunto',desc:'Está sempre no centro de alguma história da turma.',group:'Radar da turma'},
-      {id:'atualizado',name:'Radar de novidades',desc:'Fica por dentro do que acontece no 1ºA.',group:'Radar da turma'},
-      {id:'protagonista',name:'Protagonista do 1ºA',desc:'Tem presença e histórias que marcam o ano.',group:'Personalidade'},
-      {id:'misterioso',name:'Mais difícil de decifrar',desc:'Mantém a própria vida longe dos comentários.',group:'Personalidade'},
-      {id:'carismatico',name:'Mais carismático(a)',desc:'Consegue conversar com qualquer pessoa.',group:'Personalidade'},
-      {id:'caos',name:'Onde chega, rende história',desc:'Quando aparece, sempre acontece alguma coisa.',group:'Personalidade'},
-      {id:'diplomata',name:'Mediador(a) da turma',desc:'Consegue conversar com grupos diferentes e reduzir atritos.',group:'Personalidade'},
-      {id:'celebridade',name:'Chega e todo mundo nota',desc:'Tem presença e chama atenção sem precisar forçar.',group:'Personalidade'},
-      {id:'comediante',name:'Humor da sala',desc:'Sabe a hora certa de soltar uma piada.',group:'Humor & momentos'},
-      {id:'meme_humano',name:'Mais fácil de virar meme',desc:'As situações com essa pessoa viram referência na turma.',group:'Humor & momentos'},
-      {id:'reacao',name:'Melhor reação',desc:'Tem as reações mais marcantes da sala.',group:'Humor & momentos'},
-      {id:'frase',name:'Frase do ano',desc:'A frase que merece entrar para a história do 1ºA.',group:'Humor & momentos'},
-      {id:'viralizar',name:'Mais provável de viralizar',desc:'Tem o jeito ou as histórias que renderiam assunto fora da sala.',group:'Humor & momentos'},
-      {id:'improviso',name:'Resposta na ponta da língua',desc:'Nunca fica muito tempo sem ter o que responder.',group:'Humor & momentos'},
-      {id:'inteligente',name:'Mais inteligente do 1ºA',desc:'Reconhecimento de raciocínio, conhecimento e criatividade.',group:'Mérito & estilo'},
-      {id:'estiloso',name:'Estilo mais marcante',desc:'Tem identidade própria e sabe montar o visual.',group:'Mérito & estilo'},
-      {id:'presenca',name:'Presença mais marcante',desc:'É uma pessoa que a turma percebe quando chega.',group:'Mérito & estilo'},
-      {id:'coracao_ouro',name:'Mais respeitado(a) pela turma',desc:'Construiu respeito pela forma como trata as pessoas.',group:'Mérito & estilo'},
-      {id:'conselheiro',name:'Melhor conselho',desc:'Sabe ouvir e costuma ter uma visão sensata da situação.',group:'Mérito & estilo'},
-      {id:'parceiro',name:'Parceiro(a) de confiança',desc:'É alguém com quem dá para contar no dia a dia.',group:'Mérito & estilo'},
-      {id:'energia_boa',name:'Melhor energia na sala',desc:'Contribui para um ambiente mais leve e agradável.',group:'Mérito & estilo'},
-      {id:'eu_avisei',name:'Mestre do “eu avisei”',desc:'Prevê o plot twist e depois lembra todo mundo.',group:'Polêmicas leves'},
-      {id:'sumi_voltei',name:'Sumiço estratégico',desc:'Some do mapa por um tempo e reaparece normalmente.',group:'Polêmicas leves'},
-      {id:'plot_twist',name:'Plot twist do ano',desc:'Quem mais surpreendeu a turma ao longo de 2026.',group:'Polêmicas leves'}
+      {id:'iconico',name:'Mais Bonito(a)',desc:'Tem uma beleza e um estilo que chamam atenção na turma.',group:'Clássicos & momentos memoráveis'},
+      {id:'mais_fofoqueiro',name:'Mais Fofoqueiro(a)',desc:'Sempre sabe das novidades antes de todo mundo.',group:'Polêmicas & sem filtro'},
+      {id:'mais_sem_filtro',name:'Mais Sem Filtro',desc:'Fala o que pensa e às vezes só percebe depois.',group:'Polêmicas & sem filtro'},
+      {id:'mais_dramatico',name:'Mais Dramático(a)',desc:'Transforma qualquer coisa em uma cena de novela.',group:'Polêmicas & sem filtro'},
+      {id:'mais_polemico',name:'Mais Polêmico(a)',desc:'Sempre tem uma opinião que rende discussão no grupo.',group:'Polêmicas & sem filtro'},
+      {id:'mais_enrolado',name:'Mais Enrolado(a)',desc:'Promete que vai fazer o trabalho e vai deixando para depois.',group:'Polêmicas & sem filtro'},
+      {id:'mais_mao_de_vaca',name:'Mais “Mão de Vaca”',desc:'Tenta economizar até o último centavo.',group:'Polêmicas & sem filtro'},
+      {id:'mais_sumido',name:'Mais Sumido(a)',desc:'Some do mapa e reaparece principalmente quando tem prova.',group:'Polêmicas & sem filtro'},
+      {id:'cabeca_de_vento',name:'Mais Cabeça de Vento',desc:'Esquece material, recados e às vezes até o que ia falar.',group:'Vida social & comportamento'},
+      {id:'mais_gado',name:'Mais “Gado(a)”',desc:'Curte tudo e às vezes insiste mesmo quando a conversa fica no vácuo.',group:'Vida social & comportamento'},
+      {id:'mais_carente',name:'Mais Carente',desc:'Adora atenção e gosta de estar sempre perto da galera.',group:'Vida social & comportamento'},
+      {id:'mais_intenso',name:'Mais Intenso(a)',desc:'Vive cada história e sentimento como se fosse temporada final.',group:'Vida social & comportamento'},
+      {id:'mais_celular',name:'Mais Viciado(a) no Celular',desc:'A mão parece colada na tela e sempre sabe das novidades online.',group:'Vida social & comportamento'},
+      {id:'mais_preguicoso',name:'Mais Preguiçoso(a)',desc:'Sempre procura o caminho mais fácil para resolver qualquer tarefa.',group:'Vida social & comportamento'},
+      {id:'pai_mae_turma',name:'Mais “Pai/Mãe da Turma”',desc:'Lembra os prazos, organiza os trabalhos e salva o grupo dos esquecimentos.',group:'Vida social & comportamento'},
+      {id:'mais_cringe',name:'Mais Cringe',desc:'Protagoniza momentos de vergonha alheia que viram história da turma.',group:'Clássicos & momentos memoráveis'},
+      {id:'mais_estiloso',name:'Mais Estiloso(a)',desc:'Tem identidade própria e sabe montar combinações marcantes.',group:'Clássicos & momentos memoráveis'},
+      {id:'mais_cola',name:'Mais “Cola”',desc:'O mestre da sobrevivência nas avaliações — categoria de brincadeira.',group:'Clássicos & momentos memoráveis'},
+      {id:'mais_feio',name:'Mais feio',desc:'Simplesmente o mais desprovido de beleza.',group:'Clássicos & momentos memoráveis'},
+      {id:'mais_sortudo',name:'Mais Sortudo(a)',desc:'Parece sempre acertar no chute ou se salvar na última questão.',group:'Clássicos & momentos memoráveis'},
+      {id:'mais_entrosa',name:'Mais Entrosa',desc:'Consegue puxar assunto, se enturmar e participar das conversas da sala.',group:'Vida social & comportamento'}
     ];
     const $ = id => document.getElementById(id);
     const cfg = window.AWARDS_CONFIG || {};
@@ -187,7 +182,7 @@
       }catch(err){message(msg,err.message||'Não foi possível entrar. Confira o nome e o RA.','error');}
       finally{btn.disabled=false;btn.textContent='Acessar votação';}
     });
-    $('logoutButton').addEventListener('click',()=>{sessionStorage.removeItem('firstA_session');session=null;candidates=[];finalistsByCategory={};status=null;results=null;adminStats=null;lastPhase=null;if(polling)clearInterval(polling);if(ticker)clearInterval(ticker);$('categoriesGrid').innerHTML='';$('categoriesGrid').dataset.rendered='';$('dashboardView').classList.add('hidden');$('loginView').classList.remove('hidden');$('ra').value='';$('adminCode').value='';});
+    $('logoutButton').addEventListener('click',()=>{sessionStorage.removeItem('firstA_session');session=null;candidates=[];finalistsByCategory={};status=null;results=null;adminStats=null;lastPhase=null;if(polling)clearInterval(polling);if(ticker)clearInterval(ticker);$('categoriesGrid').innerHTML='';$('categoriesGrid').dataset.rendered='';$('dashboardView').classList.add('hidden');$('personalMessageCard').classList.add('hidden');$('personalMessageText').textContent='';$('loginView').classList.remove('hidden');$('ra').value='';$('adminCode').value='';});
     $('refreshButton').addEventListener('click',()=>refreshAll(true).catch(showDashboardError));
     $('startCountdownButton').addEventListener('click',async()=>{
       const btn=$('startCountdownButton');btn.disabled=true;btn.textContent='Iniciando...';
@@ -228,6 +223,9 @@
       if(!session||!status)return;
       $('welcomeTitle').textContent=`Olá, ${session.name.split(' ')[0]}.`;
       $('statusLine').textContent=session.isAdmin?'Você está no modo administrador e pode acompanhar a votação e os totais da fase atual.':'Você está conectado à votação oficial da turma.';
+      const personalMessage = typeof status.personalMessage === 'string' ? status.personalMessage : '';
+      $('personalMessageCard').classList.toggle('hidden', !personalMessage);
+      $('personalMessageText').textContent = personalMessage;
       $('adminSection').classList.toggle('hidden',!session.isAdmin);
       $('adminStartWrap').classList.toggle('hidden',!session.isAdmin||!!status.deadline);
       $('timer').classList.toggle('hidden',!status.deadline);

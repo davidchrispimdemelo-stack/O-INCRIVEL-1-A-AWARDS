@@ -39,9 +39,9 @@ Se houver empate na quarta vaga da primeira fase, o sistema usa a ordem alfabét
 
 ## Passo 1. Baixar o projeto
 
-1. Baixe o arquivo `primeiro_a_awards_site.zip` que veio nesta conversa.
+1. Baixe o arquivo `primeiro_a_awards_com_recados_individuais.zip` que veio nesta conversa.
 2. No computador, abra a pasta **Downloads**.
-3. Procure `primeiro_a_awards_site.zip`.
+3. Procure `primeiro_a_awards_com_recados_individuais.zip`.
 4. Clique nele com o botão direito do mouse.
 5. Escolha **Extrair tudo…**.
 6. Clique em **Extrair**. O Windows vai criar uma pasta com os arquivos.
@@ -54,16 +54,18 @@ Dentro dela, você deve ver pastas como `docs`, `supabase` e `tools`, além de a
 A lista com os RAs é um arquivo separado do ZIP para diminuir o risco de publicar esses dados por acidente.
 
 1. Baixe o arquivo privado `primeiro_a_awards_roster_privado.json` usando o link fornecido nesta conversa.
-2. Dentro de `primeiro_a_awards_site`, procure a pasta `private`.
-3. Se ela **não existir**, crie-a: clique com o botão direito num espaço vazio → **Novo** → **Pasta** → escreva `private` → pressione Enter.
-4. Abra a pasta `private`.
-5. Copie o arquivo que baixou para dentro dela.
-6. Renomeie o arquivo copiado para `roster.json`.
+2. Baixe também `recados_individuais_privado.sql` pelo link fornecido nesta conversa.
+3. Dentro de `primeiro_a_awards_site`, procure a pasta `private`.
+4. Se ela **não existir**, crie-a: clique com o botão direito num espaço vazio → **Novo** → **Pasta** → escreva `private` → pressione Enter.
+5. Abra a pasta `private`.
+6. Copie o arquivo `primeiro_a_awards_roster_privado.json` para dentro dela e renomeie-o para `roster.json`.
+7. Copie o arquivo `recados_individuais_privado.sql` para a mesma pasta e renomeie-o para `recados_individuais.sql`.
 
-O caminho precisa ficar assim:
+Os caminhos precisam ficar assim:
 
 ```text
 primeiro_a_awards_site\private\roster.json
+primeiro_a_awards_site\private\recados_individuais.sql
 ```
 
 Confira o nome com cuidado. O arquivo precisa chamar `roster.json`, não `roster.json.json`.
@@ -71,7 +73,7 @@ Confira o nome com cuidado. O arquivo precisa chamar `roster.json`, não `roster
 **Muito importante:**
 
 - Nunca coloque `roster.json` dentro de `docs`.
-- Nunca envie `roster.json` para o GitHub.
+- Nunca envie `roster.json` ou `recados_individuais.sql` para o GitHub. O segundo arquivo contém os recados particulares dos alunos.
 - Não abra e salve esse arquivo no Excel. O Excel pode mexer nos zeros do começo dos RAs.
 - Não mande a lista em grupos ou para pessoas que não precisam dela.
 
@@ -83,7 +85,8 @@ No fim desta parte, a pasta deve parecer com isto:
 primeiro_a_awards_site
 ├── docs             ← site público
 ├── private          ← só no seu computador
-│   └── roster.json  ← lista privada dos alunos
+│   ├── roster.json  ← lista privada dos alunos
+│   └── recados_individuais.sql ← recados privados (baixado separadamente)
 ├── supabase         ← banco e código do servidor
 ├── tools            ← programa de importação da lista
 ├── .gitignore       ← ajuda a impedir envio de arquivos privados
@@ -365,6 +368,20 @@ Pare. Não tente importar outra vez, não apague a tabela `students` e não rode
 
 ---
 
+Se aparecer uma mensagem de sucesso indicando que a importação foi concluída, a turma foi cadastrada. Não tente fazer a importação de novo.
+
+## Passo adicional — configurar os recados individuais
+
+O site pode mostrar um recado próprio para cada participante após o login. Para ativar isso sem colocar todos os textos no HTML público:
+
+1. Baixe `recados_individuais_privado.sql` pelo link fornecido nesta conversa, salve-o dentro de `private` com o nome `recados_individuais.sql` e abra-o no Bloco de Notas.
+2. No Supabase, abra **SQL Editor** e crie uma consulta nova.
+3. Copie o conteúdo do arquivo privado, cole na consulta e clique em **Run**. Faça isso somente depois que a lista dos 37 alunos estiver importada.
+4. Publique novamente a Edge Function `awards-api` para ativar a leitura dos recados pelo servidor.
+5. Mantenha a pasta `private` fora do GitHub; envie apenas o conteúdo destinado a `docs` para a publicação do site.
+
+Se os recados ainda não forem configurados, a votação continua carregando, mas o cartão de mensagem individual não aparece.
+
 # PARTE 7 — Conectar a página ao banco
 
 ## Passo 17. Editar `docs/config.js`
@@ -480,7 +497,7 @@ Guia oficial do GitHub Pages: <https://docs.github.com/en/pages/getting-started-
 6. No campo de código extra do ADM, digite o código definido em `ADMIN_ACCESS_CODE` no Supabase.
 7. Clique em **Acessar votação**.
 8. O painel de administrador deve aparecer. Ele mostra os totais da votação, mas não liga uma cédula a um aluno.
-9. Confira se há **28 categorias** e **37 participantes**.
+9. Confira se há **21 categorias** e **37 participantes**.
 10. Antes de iniciar, confira de novo se a votação ainda está fechada.
 
 O site ignora diferenças de maiúsculas/minúsculas e acentos no nome, mas precisa ser o nome certo. Para o RA, retire `SP`, mantenha os zeros iniciais e mantenha um `X` final, se existir.
@@ -572,7 +589,8 @@ Marque cada item antes de anunciar a votação:
 - [ ] Tenho autorização da escola/responsável para usar os dados dos alunos.
 - [ ] A pasta local tem `private/roster.json`.
 - [ ] `roster.json` **não** está na pasta `docs`.
-- [ ] O banco Supabase foi criado e o `schema.sql` foi executado uma vez.
+- [ ] O banco Supabase foi criado e o `schema.sql` atualizado foi executado.
+- [ ] Depois da importação, `private/recados_individuais.sql` foi executado no SQL Editor (o arquivo não foi publicado).
 - [ ] Os quatro segredos foram configurados no Supabase.
 - [ ] A função `awards-api` foi publicada.
 - [ ] O importador confirmou **37 participantes**.

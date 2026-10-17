@@ -10,34 +10,27 @@ const ADMIN_NAME = "david chrispim de melo";
 const DAY_MS = 24 * 60 * 60 * 1000;
 
 const categories = [
-  { id: "reporter", name: "Central da fofoca" },
-  { id: "sherlock", name: "Detetive da turma" },
-  { id: "tenho_uma_coisa", name: "Sempre tem uma informação" },
-  { id: "detetive_indiretas", name: "Detetive de indiretas" },
-  { id: "virar_assunto", name: "Mais provável de virar assunto" },
-  { id: "atualizado", name: "Radar de novidades" },
-  { id: "protagonista", name: "Protagonista do 1ºA" },
-  { id: "misterioso", name: "Mais difícil de decifrar" },
-  { id: "carismatico", name: "Mais carismático(a)" },
-  { id: "caos", name: "Onde chega, rende história" },
-  { id: "diplomata", name: "Mediador(a) da turma" },
-  { id: "celebridade", name: "Chega e todo mundo nota" },
-  { id: "comediante", name: "Humor da sala" },
-  { id: "meme_humano", name: "Mais fácil de virar meme" },
-  { id: "reacao", name: "Melhor reação" },
-  { id: "frase", name: "Frase do ano" },
-  { id: "viralizar", name: "Mais provável de viralizar" },
-  { id: "improviso", name: "Resposta na ponta da língua" },
-  { id: "inteligente", name: "Mais inteligente do 1ºA" },
-  { id: "estiloso", name: "Estilo mais marcante" },
-  { id: "presenca", name: "Presença mais marcante" },
-  { id: "coracao_ouro", name: "Mais respeitado(a) pela turma" },
-  { id: "conselheiro", name: "Melhor conselho" },
-  { id: "parceiro", name: "Parceiro(a) de confiança" },
-  { id: "energia_boa", name: "Melhor energia na sala" },
-  { id: "eu_avisei", name: "Mestre do “eu avisei”" },
-  { id: "sumi_voltei", name: "Sumiço estratégico" },
-  { id: "plot_twist", name: "Plot twist do ano" },
+  { id: "iconico", name: "Mais Bonito(a)" },
+  { id: "mais_fofoqueiro", name: "Mais Fofoqueiro(a)" },
+  { id: "mais_sem_filtro", name: "Mais Sem Filtro" },
+  { id: "mais_dramatico", name: "Mais Dramático(a)" },
+  { id: "mais_polemico", name: "Mais Polêmico(a)" },
+  { id: "mais_enrolado", name: "Mais Enrolado(a)" },
+  { id: "mais_mao_de_vaca", name: "Mais “Mão de Vaca”" },
+  { id: "mais_sumido", name: "Mais Sumido(a)" },
+  { id: "cabeca_de_vento", name: "Mais Cabeça de Vento" },
+  { id: "mais_gado", name: "Mais “Gado(a)”" },
+  { id: "mais_carente", name: "Mais Carente" },
+  { id: "mais_intenso", name: "Mais Intenso(a)" },
+  { id: "mais_celular", name: "Mais Viciado(a) no Celular" },
+  { id: "mais_preguicoso", name: "Mais Preguiçoso(a)" },
+  { id: "pai_mae_turma", name: "Mais “Pai/Mãe da Turma”" },
+  { id: "mais_cringe", name: "Mais Cringe" },
+  { id: "mais_estiloso", name: "Mais Estiloso(a)" },
+  { id: "mais_cola", name: "Mais “Cola”" },
+  { id: "mais_gente_boa", name: "Mais Gente Boa" },
+  { id: "mais_sortudo", name: "Mais Sortudo(a)" },
+  { id: "mais_entrosa", name: "Mais Entrosa" },
 ];
 const categoryIds = new Set(categories.map((c) => c.id));
 const supabase = createClient(SUPABASE_URL, SERVICE_KEY, {
@@ -105,6 +98,17 @@ async function getDeadline(): Promise<string | null> {
   const { data, error } = await supabase.from("awards_config").select("deadline").eq("id", 1).single();
   if (error) throw error;
   return data?.deadline ?? null;
+}
+async function getPersonalMessage(studentId: string): Promise<string | null> {
+  const { data, error } = await supabase.from("student_messages")
+    .select("message").eq("student_id", studentId).maybeSingle();
+  // Se a tabela ainda não foi configurada, a votação continua funcionando; o organizador
+  // pode aplicar o script privado dos recados e publicar a função novamente.
+  if (error) {
+    console.error("Não foi possível carregar o recado individual:", error.message);
+    return null;
+  }
+  return typeof data?.message === "string" ? data.message : null;
 }
 function getPhase(deadline: string | null, nowMs = Date.now()): "not_started" | "general" | "final" | "closed" {
   if (!deadline) return "not_started";
@@ -221,7 +225,7 @@ Deno.serve(async (req: Request) => {
       const hasAdminCode = Boolean(ADMIN_ACCESS_CODE && constantTimeEqual(String(body.adminCode ?? ""), ADMIN_ACCESS_CODE));
       const isAdmin = Boolean(student.is_admin && hasAdminCode);
       const token = await createSession({ sid: student.id, name: student.full_name, admin: isAdmin });
-      const { data: candidates, error: candidatesError } = await supabase.from("students").select("id, full_name").order("full_name");
+      const { data: candidates, error: candidatesError } = await supabase.from("students").select("id, full_name").neq("id", student.id).order("full_name");
       if (candidatesError) throw candidatesError;
       return json({ token, studentId: student.id, fullName: student.full_name, isAdmin, candidates: candidates ?? [] });
     }
@@ -233,9 +237,11 @@ Deno.serve(async (req: Request) => {
       let hasVotedGeneral: boolean | null = null;
       let hasVotedFinal: boolean | null = null;
       let isAdmin = false;
+      let personalMessage: string | null = null;
       if (body.session) {
         const session = await authenticatedSession(body.session);
         isAdmin = session.admin === true;
+        personalMessage = await getPersonalMessage(String(session.sid));
         const { data: studentState, error } = await supabase.from("students")
           .select("has_voted_general, has_voted_final").eq("id", session.sid).single();
         if (error) throw error;
@@ -246,16 +252,18 @@ Deno.serve(async (req: Request) => {
       const phaseDeadline = deadline && phase === "general"
         ? new Date(new Date(deadline).getTime() - 10 * DAY_MS).toISOString()
         : phase === "final" || phase === "closed" ? deadline : null;
-      return json({ deadline, phaseDeadline, phase, resultsReleased: phase === "closed", hasVoted, hasVotedGeneral, hasVotedFinal, isAdmin, serverNow: new Date().toISOString() });
+      return json({ deadline, phaseDeadline, phase, resultsReleased: phase === "closed", hasVoted, hasVotedGeneral, hasVotedFinal, isAdmin, personalMessage, serverNow: new Date().toISOString() });
     }
 
     if (action === "candidates") {
-      await authenticatedSession(body.session);
-      const { data, error } = await supabase.from("students").select("id, full_name").order("full_name");
+      const session = await authenticatedSession(body.session);
+      const { data, error } = await supabase.from("students").select("id, full_name").neq("id", session.sid).order("full_name");
       if (error) throw error;
       const deadline = await getDeadline();
       const phase = getPhase(deadline);
-      const finalistsByCategory = phase === "final" || phase === "closed" ? await getFinalistsByCategory() : {};
+      const allFinalists = phase === "final" || phase === "closed" ? await getFinalistsByCategory() : {};
+      // A pessoa autenticada nunca aparece como opção, mesmo se for finalista.
+      const finalistsByCategory = Object.fromEntries(Object.entries(allFinalists).map(([categoryId, people]) => [categoryId, people.filter((person) => person.id !== session.sid)]));
       return json({ candidates: data ?? [], finalistsByCategory, phase });
     }
 
@@ -282,6 +290,8 @@ Deno.serve(async (req: Request) => {
       if (entries.length < 1) return json({ error: "Escolha ao menos uma categoria." }, 400);
       if (entries.some(([cat, candidate]) => !categoryIds.has(cat) || typeof candidate !== "string")) return json({ error: "Há uma escolha inválida na cédula." }, 400);
       const candidateIds = Array.from(new Set(entries.map(([, candidate]) => candidate as string)));
+      // Validação no servidor: não é possível contornar a interface para votar em si mesmo.
+      if (candidateIds.includes(session.sid)) return json({ error: "Você não pode votar em si mesmo(a). Escolha outra pessoa nessa categoria." }, 400);
       const { data: validCandidates, error: candidatesError } = await supabase.from("students").select("id").in("id", candidateIds);
       if (candidatesError) throw candidatesError;
       const validIds = new Set((validCandidates ?? []).map((s: any) => s.id));

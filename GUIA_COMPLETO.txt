@@ -39,9 +39,9 @@ PARTE 1 — Deixar os arquivos organizados
 
 Passo 1. Baixar o projeto
 
-1. Baixe o arquivo primeiro_a_awards_site.zip que veio nesta conversa.
+1. Baixe o arquivo primeiro_a_awards_com_recados_individuais.zip que veio nesta conversa.
 2. No computador, abra a pasta Downloads.
-3. Procure primeiro_a_awards_site.zip.
+3. Procure primeiro_a_awards_com_recados_individuais.zip.
 4. Clique nele com o botão direito do mouse.
 5. Escolha Extrair tudo….
 6. Clique em Extrair. O Windows vai criar uma pasta com os arquivos.
@@ -480,7 +480,7 @@ Passo 24. Testar a página sem começar a votação
 6. No campo de código extra do ADM, digite o código definido em ADMIN_ACCESS_CODE no Supabase.
 7. Clique em Acessar votação.
 8. O painel de administrador deve aparecer. Ele mostra os totais da votação, mas não liga uma cédula a um aluno.
-9. Confira se há 28 categorias e 37 participantes.
+9. Confira se há 21 categorias e 37 participantes.
 10. Antes de iniciar, confira de novo se a votação ainda está fechada.
 
 O site ignora diferenças de maiúsculas/minúsculas e acentos no nome, mas precisa ser o nome certo. Para o RA, retire SP, mantenha os zeros iniciais e mantenha um X final, se existir.

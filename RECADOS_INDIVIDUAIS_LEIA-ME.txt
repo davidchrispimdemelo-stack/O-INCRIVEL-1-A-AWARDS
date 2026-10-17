@@ -1,0 +1,10 @@
+RECADOS INDIVIDUAIS — ATIVAÇÃO
+
+1. Execute/atualize supabase/schema.sql no SQL Editor do Supabase.
+2. Importe a lista dos participantes normalmente.
+3. Abra private/recados_individuais.sql e execute seu conteúdo no SQL Editor.
+4. Publique novamente a Edge Function awards-api.
+5. Publique a pasta docs no GitHub Pages. NÃO envie a pasta private para o GitHub.
+
+A mensagem aparece depois que a pessoa faz login; o navegador não recebe os recados dos outros alunos.
+Este projeto precisa estar configurado com o seu próprio projeto Supabase antes de funcionar online.
