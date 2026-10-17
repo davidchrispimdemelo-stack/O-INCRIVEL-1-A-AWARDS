@@ -1,0 +1,10 @@
+# Nunca versionar dados identificáveis dos alunos ou secrets locais
+/private/
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+
+# Dependências instaladas localmente pelo npm (Supabase CLI)
+/node_modules/

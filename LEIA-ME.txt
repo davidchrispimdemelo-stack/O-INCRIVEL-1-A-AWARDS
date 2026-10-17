@@ -1,0 +1,11 @@
+1ºA AWARDS 2026 — LEIA PRIMEIRO
+
+1. Abra GUIA_COMPLETO.md e siga as partes na ordem. Ele explica tudo em detalhes.
+2. O arquivo privado com os RAs fica em private\roster.json no seu computador. Nunca o coloque na pasta docs e nunca o publique no GitHub.
+3. Crie um projeto Supabase, execute supabase\schema.sql, configure os segredos e publique a função awards-api.
+4. Execute py tools\import_roster.py uma única vez para importar a turma. Depois retire o segredo temporário ROSTER_SETUP_KEY.
+5. Edite docs\config.js com a URL do projeto Supabase e a chave pública.
+6. Publique somente a página pelo GitHub Pages, usando a pasta /docs.
+7. Teste o login de ADM e confirme que tudo funciona. Só então comece a contagem de 20 dias.
+
+CUIDADO: peça autorização à escola/responsável. O site do GitHub Pages é público. Nunca publique a lista privada, senhas ou chaves secretas.

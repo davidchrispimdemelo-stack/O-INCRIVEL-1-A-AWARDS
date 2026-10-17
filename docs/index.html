@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111315">
+  <meta name="description" content="1ºA Awards 2026 — votação oficial da turma, com apuração e divulgação dos resultados.">
+  <title>1ºA Awards 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#0c0b0e;--panel:#151419;--panel2:#1d1b22;--gold:#e4bf69;--gold2:#b88936;--text:#f6f2e9;--muted:#aaa5ae;--line:#37323b;--red:#ff837e;--green:#9fdfb0}
+    *{box-sizing:border-box} body{margin:0;background:radial-gradient(ellipse at top,#28202a 0,#0c0b0e 47rem);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.17;background-image:radial-gradient(#e4bf69 0.7px,transparent .7px);background-size:25px 25px;mask-image:linear-gradient(to bottom,black,transparent 70%)}
+    .wrap{width:min(1080px,calc(100% - 32px));margin:0 auto;position:relative}.top{display:flex;justify-content:space-between;align-items:center;padding:25px 0;border-bottom:1px solid #4a3b2a;gap:16px}.brand{display:flex;align-items:center;gap:12px}.crown{height:44px;width:44px;border:1px solid #80652f;color:var(--gold);display:grid;place-items:center;border-radius:13px;background:linear-gradient(135deg,#282018,#17141a);font-size:24px}.brand small{display:block;letter-spacing:.2em;text-transform:uppercase;font-size:10px;color:var(--gold)}.brand strong{font:700 20px 'Playfair Display',serif;letter-spacing:.04em}.top-tag{font-size:11px;color:var(--gold);border:1px solid #65502b;padding:8px 11px;border-radius:999px;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap}
+    .hero{padding:45px 0 30px;text-align:center}.eyebrow{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}h1,h2,h3{font-family:'Playfair Display',serif}h1{font-size:clamp(42px,8vw,82px);line-height:.98;margin:13px 0;color:#f7e4af;text-shadow:0 8px 35px #c29b4438}h1 span{display:block;font-size:.35em;letter-spacing:.38em;margin-top:15px;color:#f7f2e8;font-family:'DM Sans',sans-serif;font-weight:500} .hero p{color:#c5bdc6;max-width:590px;line-height:1.7;margin:22px auto 0}
+    .grid{display:grid;grid-template-columns:1.05fr .95fr;gap:20px;align-items:start;margin:20px 0 60px}.panel{background:linear-gradient(160deg,#1b191fef,#111014f5);border:1px solid #40333b;border-radius:20px;padding:26px;box-shadow:0 20px 60px #0004}.panel h2{margin:0 0 8px;font-size:26px}.sub{color:var(--muted);font-size:13px;line-height:1.6;margin:0 0 20px}.label{display:block;font-size:12px;color:#e1d8c8;margin:14px 0 7px}.field{width:100%;border:1px solid #48404b;border-radius:11px;background:#0e0d11;color:var(--text);padding:13px 14px;font:inherit;outline:none}.field:focus{border-color:var(--gold);box-shadow:0 0 0 3px #e4bf6919}.button{appearance:none;border:0;border-radius:11px;padding:13px 16px;font:700 14px 'DM Sans',sans-serif;cursor:pointer;transition:transform .15s,filter .15s}.button:hover{filter:brightness(1.08);transform:translateY(-1px)}.button:disabled{opacity:.55;cursor:not-allowed;transform:none}.primary{background:linear-gradient(100deg,#f0d58d,#c39342);color:#21170a;width:100%;margin-top:18px}.secondary{background:#28232d;color:#f7e6bc;border:1px solid #5a4930}.danger{background:#312026;color:#ffc6c3;border:1px solid #71464a}.fine{font-size:11px;line-height:1.6;color:#928c98;margin-top:13px}.notice{border:1px solid #55482f;background:#211c16;color:#e7d2a1;padding:12px 14px;border-radius:11px;font-size:12px;line-height:1.5;margin-top:15px}.notice.error{border-color:#71464a;background:#28181b;color:#ffc5c1}.notice.success{border-color:#3a6144;background:#152219;color:#b6ebc3}.hidden{display:none!important}
+    .side-title{display:flex;align-items:center;justify-content:space-between;gap:10px}.pill{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);border:1px solid #65502b;border-radius:999px;padding:6px 9px}.feature{display:flex;gap:13px;padding:15px 0;border-top:1px solid #332e37}.feature:first-of-type{margin-top:13px}.feature .ico{width:37px;height:37px;display:grid;place-items:center;border-radius:11px;background:#2a231a;color:var(--gold);font-size:19px;flex-shrink:0}.feature strong{display:block;font-size:13px;margin:0 0 4px}.feature p{margin:0;color:var(--muted);font-size:12px;line-height:1.55}
+    .dashboard{margin:20px 0 60px}.dash-head{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}.dash-head h2{margin:0}.dash-actions{display:flex;gap:9px;flex-wrap:wrap}.timer-panel{display:grid;grid-template-columns:1fr auto;align-items:center;gap:18px;margin:20px 0;background:linear-gradient(110deg,#252018,#19151e);border:1px solid #6e572b;border-radius:17px;padding:22px}.timer-panel h3{font-size:21px;margin:0 0 5px}.timer-panel p{font-size:12px;color:#c2b8c9;margin:0;line-height:1.55}.timer{display:flex;gap:8px}.timebox{min-width:58px;text-align:center;padding:10px 8px;background:#0e0d11;border:1px solid #4e4026;border-radius:11px}.timebox strong{display:block;font-size:23px;font-variant-numeric:tabular-nums;color:var(--gold)}.timebox span{display:block;font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-top:4px}
+    .section-title{font:700 25px 'Playfair Display',serif;margin:28px 0 8px}.ballot-intro{font-size:13px;color:var(--muted);line-height:1.6;margin:0 0 17px}.cat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.cat{background:#17151b;border:1px solid #38313d;border-radius:14px;padding:16px;min-width:0}.cat-head{display:flex;gap:10px;align-items:flex-start;margin-bottom:13px}.cat-num{font-size:10px;color:#25190c;background:var(--gold);border-radius:7px;padding:6px 7px;font-weight:800}.cat h3{font-size:17px;margin:0 0 5px}.cat p{font-size:11px;color:var(--muted);margin:0;line-height:1.45}.cat select{width:100%;border-radius:9px;padding:11px;background:#0c0b0e;color:var(--text);border:1px solid #45404a;font:inherit;font-size:12px}.ballot-footer{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:18px}.ballot-footer .button{min-width:210px}.ballot-footer small{font-size:11px;color:var(--muted)}
+    .stats-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0}.stat{background:#0e0d11;border:1px solid #332e37;border-radius:13px;padding:14px}.stat strong{display:block;font-size:25px;color:var(--gold);font-variant-numeric:tabular-nums}.stat span{display:block;font-size:10px;color:var(--muted);margin-top:5px;text-transform:uppercase;letter-spacing:.08em}.tally-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.tally-card{background:#111014;border:1px solid #302b34;border-radius:13px;padding:14px}.tally-card h3{font-size:15px;margin:0 0 11px}.tally-row{display:flex;justify-content:space-between;gap:12px;font-size:12px;padding:7px 0;border-top:1px solid #28232c}.tally-row .count{color:var(--gold);font-weight:700;white-space:nowrap}.result-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:17px}.result{border:1px solid #504127;background:linear-gradient(140deg,#211d17,#151319);border-radius:13px;padding:16px}.result .winner{font-size:18px;color:#f2d997;font-family:'Playfair Display',serif;margin:8px 0}.result .votes{font-size:11px;color:var(--muted)}.foot{text-align:center;color:#726d78;font-size:11px;padding:0 0 30px;line-height:1.7}.loading{padding:22px;text-align:center;color:var(--muted)}
+    @media(max-width:760px){.grid{grid-template-columns:1fr}.hero{padding-top:34px}.panel{padding:21px}.timer-panel{grid-template-columns:1fr}.timer{justify-content:flex-start}.cat-grid,.tally-list,.result-grid{grid-template-columns:1fr}.stats-grid{grid-template-columns:repeat(3,1fr)}.timebox{flex:1;min-width:0}.top-tag{display:none}.dash-head{align-items:flex-start}.brand strong{font-size:17px}}
+
+    /* Identidade visual revisada: editorial urbana, inspirada na sinalização de São Paulo. */
+    :root{--bg:#111315;--panel:#191c1f;--panel2:#22262a;--gold:#f2c300;--gold2:#d1a900;--text:#f1f2f2;--muted:#a2a8ad;--line:#363b40;--red:#ff7777;--green:#7fd69a}
+    body{background:#111315;color:var(--text);font-family:'DM Sans',sans-serif}
+    body:before{opacity:.2;background-image:linear-gradient(to right,#292d31 1px,transparent 1px),linear-gradient(to bottom,#292d31 1px,transparent 1px);background-size:42px 42px;mask-image:linear-gradient(to bottom,black,transparent 72%)}
+    .wrap{width:min(1120px,calc(100% - 40px))}
+    .top{padding:19px 0;border-bottom:1px solid #3a3f43}
+    .brand{gap:13px}
+    .crown{height:44px;width:44px;border:0;border-radius:3px;background:var(--gold);color:#111315;font:800 17px 'Barlow Condensed',sans-serif;letter-spacing:-.03em}
+    .brand small{font-size:9px;letter-spacing:.17em;color:#c0c5c8}
+    .brand strong{font:700 23px 'Barlow Condensed',sans-serif;letter-spacing:.045em;color:#fff}
+    .top-tag{font-size:10px;color:#f2c300;border:1px solid #5c501a;border-radius:2px;padding:8px 10px;letter-spacing:.13em}
+    .hero{padding:53px 0 38px;text-align:left;border-bottom:1px solid #33383c}
+    .eyebrow{font-size:10px;letter-spacing:.2em;color:var(--gold);font-weight:700}
+    .eyebrow:before{content:'';display:inline-block;vertical-align:middle;width:22px;height:3px;background:var(--gold);margin:0 9px 3px 0}
+    h1,h2,h3,.section-title{font-family:'Barlow Condensed','DM Sans',sans-serif}
+    h1{font-size:clamp(54px,9vw,100px);line-height:.88;letter-spacing:-.02em;margin:18px 0;color:#f4f5f5;text-shadow:none;font-weight:800}
+    h1 span{font-size:13px;letter-spacing:.2em;margin-top:18px;color:var(--gold);font-weight:700}
+    .hero p{color:#b8bdc1;max-width:650px;line-height:1.75;margin:22px 0 0;font-size:15px}
+    .grid{grid-template-columns:1.06fr .94fr;gap:16px;margin:22px 0 58px}
+    .panel{background:rgba(25,28,31,.96);border:1px solid #393e42;border-radius:5px;padding:25px;box-shadow:none}
+    .panel h2{margin:0 0 8px;font-size:29px;letter-spacing:.005em}
+    .sub{color:#a7adb2;font-size:13px;line-height:1.7}
+    .label{color:#d1d5d7;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+    .field{border:1px solid #454b50;border-radius:3px;background:#101214;color:var(--text);padding:14px;font:inherit}
+    .field:focus{border-color:var(--gold);box-shadow:0 0 0 2px #f2c3001e}
+    .button{border-radius:3px;padding:13px 16px;font:700 13px 'DM Sans',sans-serif;letter-spacing:.015em;transition:background .15s,border-color .15s}
+    .button:hover{filter:none;transform:none}
+    .primary{background:var(--gold);color:#161718;box-shadow:none}
+    .primary:hover{background:#ffda31}
+    .secondary{background:#272b2f;color:#f2f3f3;border:1px solid #4b5055}
+    .danger{background:#2a2021;color:#ffc5c5;border:1px solid #6b4144}
+    .fine{color:#82898e;font-size:11px;line-height:1.65}
+    .notice{border:1px solid #5b4e16;background:#201f16;color:#e3d58d;border-radius:3px;padding:12px 14px;font-size:12px;line-height:1.65}
+    .notice.error{border-color:#71464a;background:#28181b;color:#ffc5c1}.notice.success{border-color:#3a6144;background:#152219;color:#b6ebc3}
+    .side-title{align-items:flex-start}.pill{font-size:9px;letter-spacing:.12em;color:var(--gold);border:1px solid #5a501d;border-radius:2px;padding:6px 8px;white-space:nowrap}
+    .feature{gap:12px;padding:14px 0;border-top:1px solid #303539}.feature .ico{width:35px;height:35px;border-radius:3px;background:var(--gold);color:#111315;font:700 13px 'Barlow Condensed',sans-serif;letter-spacing:.04em}.feature strong{font-size:13px;font-weight:700}.feature p{font-size:12px;color:#a7adb2;line-height:1.6}
+    .dashboard{margin:25px 0 60px}.dash-head h2{font-size:32px}.dash-actions{gap:7px}
+    .timer-panel{background:#1a1d20;border:1px solid #454a4f;border-left:4px solid var(--gold);border-radius:4px;padding:21px;margin:18px 0}.timer-panel h3{font-size:25px;letter-spacing:.005em}.timer-panel p{color:#aab0b4;font-size:12px}.timer{gap:6px}.timebox{min-width:60px;background:#101214;border:1px solid #3b4145;border-radius:3px;padding:10px 9px}.timebox strong{color:var(--gold);font:700 30px 'Barlow Condensed',sans-serif}.timebox span{font-size:9px;letter-spacing:.13em}
+    .section-title{font-size:31px;letter-spacing:.005em;margin:29px 0 9px}.ballot-intro{font-size:13px;color:#a7adb2;line-height:1.7}.cat-grid{gap:10px}.cat{background:#191c1f;border:1px solid #353a3e;border-radius:4px;padding:15px}.cat-head{gap:10px;margin-bottom:12px}.cat-num{font:700 12px 'Barlow Condensed',sans-serif;color:#111315;background:var(--gold);border-radius:2px;padding:5px 7px}.cat h3{font-size:20px;line-height:1.06;margin:0 0 5px;font-weight:700}.cat p{font-size:11px;color:#a4aaaf;line-height:1.55}.cat select{border-radius:3px;padding:11px;background:#101214;color:var(--text);border:1px solid #444a4f;font:inherit;font-size:12px}.ballot-footer{margin-top:17px}.ballot-footer .button{min-width:190px}.ballot-footer small{font-size:11px;color:#a2a8ad}
+    .stats-grid{gap:9px}.stat{background:#111315;border:1px solid #363b3f;border-radius:4px}.stat strong{font:700 31px 'Barlow Condensed',sans-serif;color:var(--gold)}.stat span{font-size:9px;letter-spacing:.11em}.tally-list{gap:10px}.tally-card{background:#121416;border:1px solid #33383c;border-radius:4px}.tally-card h3{font-size:19px}.tally-row{border-top:1px solid #292e32}.tally-row .count{color:var(--gold)}
+    .result-grid{gap:10px}.result{border:1px solid #3c4246;border-top:3px solid var(--gold);background:#191c1f;border-radius:4px;padding:16px}.result .winner{font:700 25px 'Barlow Condensed',sans-serif;color:#f2f3f3;margin:9px 0}.result .votes{font-size:11px;color:#a3aaae}
+    .foot{border-top:1px solid #33383c;padding:20px 0 30px;color:#81888d;font-size:10px;letter-spacing:.03em}
+    @media(max-width:760px){.wrap{width:min(100% - 28px,1120px)}.top{padding:15px 0}.brand strong{font-size:21px}.hero{padding:40px 0 28px}.hero p{font-size:14px}.grid{grid-template-columns:1fr}.panel{padding:21px}.timer-panel{grid-template-columns:1fr}.cat-grid,.tally-list,.result-grid{grid-template-columns:1fr}.stats-grid{grid-template-columns:repeat(3,1fr)}.timebox{flex:1;min-width:0}.timebox strong{font-size:27px}.top-tag{display:none}.dash-head{align-items:flex-start}.dash-head h2{font-size:28px}.section-title{font-size:29px}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
+
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <div class="brand"><div class="crown">01</div><div><small>EDIÇÃO DA TURMA · 2026</small><strong>1ºA AWARDS</strong></div></div>
+      <div class="top-tag">VOTAÇÃO OFICIAL · 2026</div>
+    </header>
+    <section class="hero">
+      <div class="eyebrow">01 / PREMIAÇÃO DA TURMA</div>
+      <h1>1ºA AWARDS <span>VOTAÇÃO OFICIAL · EDIÇÃO 2026</span></h1>
+      <p>O 1ºA tem suas figuras, histórias e opiniões. Vote com critério, acompanhe a contagem e confira a apuração quando o prazo terminar. Sem caô e sem exposição.</p>
+    </section>
+
+    <main id="loginView" class="grid">
+      <section class="panel">
+        <h2>Acessar votação</h2>
+        <p class="sub">Entre com seu nome completo e RA, sem o sufixo SP. O nome não diferencia maiúsculas, minúsculas ou acentos.</p>
+        <form id="loginForm">
+          <label class="label" for="fullName">Nome completo</label>
+          <input class="field" id="fullName" name="fullName" autocomplete="name" placeholder="Nome completo" required maxlength="120">
+          <label class="label" for="ra">RA (sem SP)</label>
+          <input class="field" id="ra" name="ra" type="password" inputmode="text" autocomplete="current-password" placeholder="RA sem SP" required maxlength="24">
+          <div id="adminCodeWrap" class="hidden">
+            <label class="label" for="adminCode">Código extra de ADM</label>
+            <input class="field" id="adminCode" name="adminCode" type="password" autocomplete="off" placeholder="Código de acesso da administração" maxlength="100">
+            <div class="fine">O código administrativo é independente do RA. Não compartilhe.</div>
+          </div>
+          <button class="button primary" id="loginButton" type="submit">Acessar votação</button>
+          <div id="loginMessage" aria-live="polite"></div>
+        </form>
+        <div class="fine">A validação acontece no servidor. Os RAs não ficam no código público; a administração acompanha totais por categoria, não escolhas individuais.</div>
+      </section>
+      <aside class="panel">
+        <div class="side-title"><h2>Como funciona</h2><span class="pill">28 CATEGORIAS</span></div>
+        <p class="sub">Personalidade, inteligência, estilo e uma dose de polêmica. A resenha tem limite: nada de expor a intimidade dos colegas.</p>
+        <div class="feature"><div class="ico">01</div><div><strong>Radar da turma</strong><p>Fofoca, contexto, indiretas e quem sempre sabe das novidades.</p></div></div>
+        <div class="feature"><div class="ico">02</div><div><strong>Personalidade e presença</strong><p>Carisma, postura, respostas rápidas e estilo próprio.</p></div></div>
+        <div class="feature"><div class="ico">03</div><div><strong>Inteligência e estilo</strong><p>Reconhecimento para quem se destaca dentro e fora da sala.</p></div></div>
+        <div class="feature"><div class="ico">04</div><div><strong>Apuração e divulgação</strong><p>10 dias de votação geral, 10 dias de final e resultados ao encerrar o prazo.</p></div></div>
+        <div class="notice">Na moral: vote com critério. Nada de expor segredos, atacar colegas ou transformar aparência física em ranking.</div>
+      </aside>
+    </main>
+
+    <main id="dashboardView" class="dashboard hidden">
+      <div class="dash-head"><div><div class="eyebrow">ÁREA DO PARTICIPANTE</div><h2 id="welcomeTitle">Bem-vindo(a)!</h2><div id="statusLine" class="sub" style="margin:7px 0 0">Conectando ao sistema...</div></div><div class="dash-actions"><button id="refreshButton" class="button secondary">Atualizar dados</button><button id="logoutButton" class="button danger">Sair</button></div></div>
+      <section class="timer-panel"><div><h3 id="timerTitle">A contagem regressiva</h3><p id="timerDescription">Os resultados serão liberados depois de 20 dias.</p><div id="adminStartWrap" class="hidden" style="margin-top:14px"><button id="startCountdownButton" class="button primary" style="width:auto;margin:0">Abrir votação · iniciar prazo</button><p class="fine">A contagem começa uma única vez. O horário é registrado no servidor e vale para toda a turma.</p></div></div><div class="timer" id="timer"><div class="timebox"><strong id="days">20</strong><span>Dias</span></div><div class="timebox"><strong id="hours">00</strong><span>Horas</span></div><div class="timebox"><strong id="minutes">00</strong><span>Minutos</span></div><div class="timebox"><strong id="seconds">00</strong><span>Segundos</span></div></div></section>
+      <section id="votingSection" class="hidden"><h2 class="section-title" id="ballotTitle">Votação geral</h2><p class="ballot-intro" id="ballotIntro">Na primeira fase, indique uma pessoa por categoria. Você pode deixar categorias em branco. A cédula desta fase não pode ser alterada depois do envio.</p><form id="ballotForm"><div id="categoriesGrid" class="cat-grid"></div><div class="ballot-footer"><button class="button primary" id="submitBallotButton" type="submit" style="width:auto;margin:0">Enviar cédula</button><small>Confira as escolhas antes de enviar. O envio é definitivo.</small></div><div id="voteMessage" aria-live="polite"></div></form></section>
+      <section id="alreadyVoted" class="panel hidden"><h2>Cédula registrada</h2><p id="alreadyVotedText" class="sub" style="margin-bottom:0">Sua cédula desta fase foi registrada. Você poderá participar da próxima fase quando ela abrir.</p></section>
+      <section id="resultsSection" class="hidden"><h2 class="section-title">Resultados oficiais</h2><p class="ballot-intro">A votação terminou após duas fases. Os resultados abaixo são calculados com os votos da final. Em caso de empate, todos os nomes empatados aparecem como vencedores.</p><div id="resultsGrid" class="result-grid"></div></section>
+      <section id="adminSection" class="panel hidden" style="margin-top:28px"><div class="stats-head"><div><div class="eyebrow">ACESSO RESTRITO</div><h2 style="margin:8px 0 4px">Painel de administração</h2><p class="sub" style="margin:0">Acompanhe os totais por categoria e a participação. O painel não associa escolhas a alunos.</p></div><span class="pill">ADMIN</span></div><div id="adminStats" class="loading">Carregando apuração...</div><div class="fine">A apuração ao vivo é restrita à administração. A divulgação pública acontece após o encerramento do prazo.</div></section>
+      <div id="dashboardMessage" aria-live="polite"></div>
+    </main>
+    <footer class="foot">1ºA AWARDS 2026 · VOTAÇÃO DA TURMA<br>Participação recreativa. Respeite os colegas e mantenha seus dados de acesso privados.</footer>
+  </div>
+  <script src="config.js"></script>
+  <script>
+  (() => {
+    'use strict';
+    const categories = [
+      {id:'reporter',name:'Central da fofoca',desc:'Sempre sabe o que está rolando antes de virar assunto.',group:'Radar da turma'},
+      {id:'sherlock',name:'Detetive da turma',desc:'Percebe detalhes que quase todo mundo deixa passar.',group:'Radar da turma'},
+      {id:'tenho_uma_coisa',name:'Sempre tem uma informação',desc:'Quase sempre chega com uma novidade na mão.',group:'Radar da turma'},
+      {id:'detetive_indiretas',name:'Detetive de indiretas',desc:'Lê o contexto e percebe quando tem recado nas entrelinhas.',group:'Radar da turma'},
+      {id:'virar_assunto',name:'Mais provável de virar assunto',desc:'Está sempre no centro de alguma história da turma.',group:'Radar da turma'},
+      {id:'atualizado',name:'Radar de novidades',desc:'Fica por dentro do que acontece no 1ºA.',group:'Radar da turma'},
+      {id:'protagonista',name:'Protagonista do 1ºA',desc:'Tem presença e histórias que marcam o ano.',group:'Personalidade'},
+      {id:'misterioso',name:'Mais difícil de decifrar',desc:'Mantém a própria vida longe dos comentários.',group:'Personalidade'},
+      {id:'carismatico',name:'Mais carismático(a)',desc:'Consegue conversar com qualquer pessoa.',group:'Personalidade'},
+      {id:'caos',name:'Onde chega, rende história',desc:'Quando aparece, sempre acontece alguma coisa.',group:'Personalidade'},
+      {id:'diplomata',name:'Mediador(a) da turma',desc:'Consegue conversar com grupos diferentes e reduzir atritos.',group:'Personalidade'},
+      {id:'celebridade',name:'Chega e todo mundo nota',desc:'Tem presença e chama atenção sem precisar forçar.',group:'Personalidade'},
+      {id:'comediante',name:'Humor da sala',desc:'Sabe a hora certa de soltar uma piada.',group:'Humor & momentos'},
+      {id:'meme_humano',name:'Mais fácil de virar meme',desc:'As situações com essa pessoa viram referência na turma.',group:'Humor & momentos'},
+      {id:'reacao',name:'Melhor reação',desc:'Tem as reações mais marcantes da sala.',group:'Humor & momentos'},
+      {id:'frase',name:'Frase do ano',desc:'A frase que merece entrar para a história do 1ºA.',group:'Humor & momentos'},
+      {id:'viralizar',name:'Mais provável de viralizar',desc:'Tem o jeito ou as histórias que renderiam assunto fora da sala.',group:'Humor & momentos'},
+      {id:'improviso',name:'Resposta na ponta da língua',desc:'Nunca fica muito tempo sem ter o que responder.',group:'Humor & momentos'},
+      {id:'inteligente',name:'Mais inteligente do 1ºA',desc:'Reconhecimento de raciocínio, conhecimento e criatividade.',group:'Mérito & estilo'},
+      {id:'estiloso',name:'Estilo mais marcante',desc:'Tem identidade própria e sabe montar o visual.',group:'Mérito & estilo'},
+      {id:'presenca',name:'Presença mais marcante',desc:'É uma pessoa que a turma percebe quando chega.',group:'Mérito & estilo'},
+      {id:'coracao_ouro',name:'Mais respeitado(a) pela turma',desc:'Construiu respeito pela forma como trata as pessoas.',group:'Mérito & estilo'},
+      {id:'conselheiro',name:'Melhor conselho',desc:'Sabe ouvir e costuma ter uma visão sensata da situação.',group:'Mérito & estilo'},
+      {id:'parceiro',name:'Parceiro(a) de confiança',desc:'É alguém com quem dá para contar no dia a dia.',group:'Mérito & estilo'},
+      {id:'energia_boa',name:'Melhor energia na sala',desc:'Contribui para um ambiente mais leve e agradável.',group:'Mérito & estilo'},
+      {id:'eu_avisei',name:'Mestre do “eu avisei”',desc:'Prevê o plot twist e depois lembra todo mundo.',group:'Polêmicas leves'},
+      {id:'sumi_voltei',name:'Sumiço estratégico',desc:'Some do mapa por um tempo e reaparece normalmente.',group:'Polêmicas leves'},
+      {id:'plot_twist',name:'Plot twist do ano',desc:'Quem mais surpreendeu a turma ao longo de 2026.',group:'Polêmicas leves'}
+    ];
+    const $ = id => document.getElementById(id);
+    const cfg = window.AWARDS_CONFIG || {};
+    const configReady = cfg.SUPABASE_URL && !cfg.SUPABASE_URL.includes('SEU-PROJETO') && cfg.SUPABASE_ANON_KEY && !cfg.SUPABASE_ANON_KEY.includes('COLE_');
+    let session = null, candidates = [], finalistsByCategory = {}, status = null, results = null, adminStats = null, lastReleased = null, lastPhase = null, polling = null, ticker = null, releaseRefreshPending = false, serverOffsetMs = 0;
+    function normalizeName(s){return (s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('pt-BR').replace(/[^a-z0-9 ]/g,' ').replace(/\s+/g,' ').trim();}
+    function h(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+    function apiUrl(){return cfg.SUPABASE_URL.replace(/\/$/,'') + '/functions/v1/awards-api';}
+    async function api(action, payload={}){
+      if(!configReady) throw new Error('Falta configurar docs/config.js com a URL do Supabase e a chave pública anon.');
+      const response = await fetch(apiUrl(), {method:'POST',headers:{'Content-Type':'application/json','apikey':cfg.SUPABASE_ANON_KEY,'Authorization':'Bearer '+cfg.SUPABASE_ANON_KEY},body:JSON.stringify({action,...payload})});
+      let data={}; try{data=await response.json()}catch(_){/* noop */}
+      if(!response.ok || data.error) throw new Error(data.error || `Falha na solicitação (${response.status}).`);
+      return data;
+    }
+    function message(el, text, type=''){el.className='notice'+(type?' '+type:'');el.textContent=text;el.classList.remove('hidden');}
+    function clearMessage(el){el.className='hidden';el.textContent='';}
+    $('fullName').addEventListener('input',()=>{
+      const isDavid = normalizeName($('fullName').value)==='david chrispim de melo';
+      $('adminCodeWrap').classList.toggle('hidden',!isDavid);
+    });
+    $('loginForm').addEventListener('submit', async e=>{
+      e.preventDefault(); const btn=$('loginButton'), msg=$('loginMessage');clearMessage(msg);btn.disabled=true;btn.textContent='Verificando...';
+      try{
+        const data=await api('login',{fullName:$('fullName').value,ra:$('ra').value,adminCode:$('adminCode').value});
+        session={token:data.token,name:data.fullName,studentId:data.studentId,isAdmin:!!data.isAdmin};
+        sessionStorage.setItem('firstA_session',JSON.stringify(session)); candidates=data.candidates||[];
+        $('loginView').classList.add('hidden');$('dashboardView').classList.remove('hidden');
+        await refreshAll(true);startPolling();
+      }catch(err){message(msg,err.message||'Não foi possível entrar. Confira o nome e o RA.','error');}
+      finally{btn.disabled=false;btn.textContent='Acessar votação';}
+    });
+    $('logoutButton').addEventListener('click',()=>{sessionStorage.removeItem('firstA_session');session=null;candidates=[];finalistsByCategory={};status=null;results=null;adminStats=null;lastPhase=null;if(polling)clearInterval(polling);if(ticker)clearInterval(ticker);$('categoriesGrid').innerHTML='';$('categoriesGrid').dataset.rendered='';$('dashboardView').classList.add('hidden');$('loginView').classList.remove('hidden');$('ra').value='';$('adminCode').value='';});
+    $('refreshButton').addEventListener('click',()=>refreshAll(true).catch(showDashboardError));
+    $('startCountdownButton').addEventListener('click',async()=>{
+      const btn=$('startCountdownButton');btn.disabled=true;btn.textContent='Iniciando...';
+      try{await api('start_countdown',{session:session.token});await refreshAll(true);message($('dashboardMessage'),'Prazo iniciado: 10 dias de votação geral, seguidos de 10 dias de final.','success');}
+      catch(err){showDashboardError(err)}finally{btn.disabled=false;btn.textContent='Abrir votação · iniciar prazo';}
+    });
+    $('ballotForm').addEventListener('submit',async e=>{
+      e.preventDefault();const btn=$('submitBallotButton'),msg=$('voteMessage');clearMessage(msg);
+      const votes={};for(const c of categories){const select=document.getElementById('vote_'+c.id);if(select&&select.value)votes[c.id]=select.value;}
+      if(Object.keys(votes).length===0){message(msg,'Escolha ao menos uma categoria antes de enviar.','error');return;}
+      const faseNome=status.phase==='final'?'na final':'na votação geral';if(!confirm(`Você escolheu ${Object.keys(votes).length} categoria(s) ${faseNome}. A cédula desta fase não poderá ser alterada. Confirmar?`))return;
+      btn.disabled=true;btn.textContent='Enviando voto...';
+      try{await api('submit_vote',{session:session.token,votes});status.hasVoted=true;if(status.phase==='general')status.hasVotedGeneral=true;if(status.phase==='final')status.hasVotedFinal=true;renderDashboard();message($('dashboardMessage'),status.phase==='general'?'Voto da primeira fase registrado. A final começa no 11º dia.':'Voto da final registrado. Os resultados serão liberados ao fim do 20º dia.','success');}
+      catch(err){message(msg,err.message||'Não foi possível registrar os votos.','error');}
+      finally{btn.disabled=false;btn.textContent='Enviar cédula';}
+    });
+    function showDashboardError(err){message($('dashboardMessage'),err.message||'Ocorreu um erro ao atualizar.','error');}
+    async function refreshAll(forceRender=false){
+      const previousPhase=status&&status.phase;
+      const previousReleased=status&&status.resultsReleased;
+      const s=await api('status',{session:session.token});
+      status=s;serverOffsetMs=s.serverNow?Date.parse(s.serverNow)-Date.now():0;
+      const phaseChanged=previousPhase!==status.phase;
+      if(!candidates.length||phaseChanged){
+        const c=await api('candidates',{session:session.token});
+        candidates=c.candidates||[];
+        finalistsByCategory=c.finalistsByCategory||{};
+        $('categoriesGrid').dataset.rendered='';
+        $('categoriesGrid').innerHTML='';
+      }
+      if(status.resultsReleased){const r=await api('results',{session:session.token});results=r.results||[];}
+      if(session.isAdmin){const a=await api('admin_stats',{session:session.token});adminStats=a;}
+      if(forceRender||phaseChanged||previousReleased!==status.resultsReleased||lastReleased!==status.resultsReleased){renderDashboard();lastReleased=status.resultsReleased;lastPhase=status.phase;}
+      else updateTimer();
+      if(session.isAdmin)renderAdminStats();
+    }
+    function renderDashboard(){
+      if(!session||!status)return;
+      $('welcomeTitle').textContent=`Olá, ${session.name.split(' ')[0]}.`;
+      $('statusLine').textContent=session.isAdmin?'Você está no modo administrador e pode acompanhar a votação e os totais da fase atual.':'Você está conectado à votação oficial da turma.';
+      $('adminSection').classList.toggle('hidden',!session.isAdmin);
+      $('adminStartWrap').classList.toggle('hidden',!session.isAdmin||!!status.deadline);
+      $('timer').classList.toggle('hidden',!status.deadline);
+      if(status.phase==='not_started'){
+        $('timerTitle').textContent='A contagem ainda não começou';
+        $('timerDescription').textContent=session.isAdmin?'Quando estiver tudo pronto, inicie os 20 dias: 10 de votação geral e 10 de final.':'A organização ainda não iniciou oficialmente a contagem regressiva.';
+        $('votingSection').classList.add('hidden');$('alreadyVoted').classList.add('hidden');$('resultsSection').classList.add('hidden');
+      }else if(status.phase==='closed'){
+        $('timerTitle').textContent='Votação encerrada';$('timerDescription').textContent='Os 20 dias terminaram. Os resultados oficiais da final estão disponíveis.';
+        $('votingSection').classList.add('hidden');$('alreadyVoted').classList.add('hidden');$('resultsSection').classList.remove('hidden');renderResults();
+      }else{
+        const general=status.phase==='general';
+        $('timerTitle').textContent=general?'Fase 1 — votação geral':'Fase 2 — final por categoria';
+        $('timerDescription').textContent=general
+          ?'Nos primeiros 10 dias, vote nas categorias. Ao fim desta fase, os quatro mais votados em cada categoria avançam para a final.'
+          :'Do 11º ao 20º dia, vote entre os quatro finalistas de cada categoria. Os resultados saem quando o prazo terminar.';
+        $('ballotTitle').textContent=general?'Votação geral':'Final por categoria';
+        $('ballotIntro').textContent=general
+          ?'Escolha uma pessoa por categoria. No 11º dia, os quatro mais votados em cada tema avançam para a final. Você pode pular categorias.'
+          :'Agora cada categoria mostra apenas os quatro finalistas da primeira fase. Vote novamente: sua cédula da final é independente da primeira.';
+        $('resultsSection').classList.add('hidden');
+        $('votingSection').classList.toggle('hidden',!!status.hasVoted);
+        $('alreadyVoted').classList.toggle('hidden',!status.hasVoted);
+        if(status.hasVoted){
+          $('alreadyVotedText').textContent=general
+            ?'Seu voto da votação geral já foi registrado. No 11º dia, você poderá votar de novo, agora entre os quatro finalistas de cada categoria.'
+            :'Seu voto da final já foi registrado. Os resultados oficiais serão liberados assim que terminar o 20º dia.';
+        }else{
+          $('submitBallotButton').textContent=general?'Enviar voto da primeira fase':'Enviar voto da final';
+          renderBallot();
+        }
+      }
+      updateTimer();renderAdminStats();
+    }
+    function renderBallot(){
+      if($('categoriesGrid').dataset.rendered==='true') return;
+      $('categoriesGrid').innerHTML=categories.map((c,i)=>{
+        const options=status&&status.phase==='final'?(finalistsByCategory[c.id]||[]):candidates;
+        return `<article class="cat"><div class="cat-head"><span class="cat-num">${String(i+1).padStart(2,'0')}</span><div><h3>${h(c.name)}</h3><p>${h(c.desc)}</p></div></div><select id="vote_${c.id}" aria-label="Voto: ${h(c.name)}"><option value="">Pular esta categoria</option>${options.map(p=>`<option value="${h(p.id)}">${h(p.full_name||p.name)}</option>`).join('')}</select></article>`;
+      }).join('');
+      $('categoriesGrid').dataset.rendered='true';
+    }
+    function updateTimer(){
+      if(!status||!status.phaseDeadline)return;
+      const remaining=Math.max(0,new Date(status.phaseDeadline).getTime()-(Date.now()+serverOffsetMs));const total=Math.floor(remaining/1000);
+      $('days').textContent=String(Math.floor(total/86400)).padStart(2,'0');$('hours').textContent=String(Math.floor(total%86400/3600)).padStart(2,'0');$('minutes').textContent=String(Math.floor(total%3600/60)).padStart(2,'0');$('seconds').textContent=String(total%60).padStart(2,'0');
+      if(remaining===0&&!status.resultsReleased&&!releaseRefreshPending){releaseRefreshPending=true;refreshAll(true).catch(showDashboardError).finally(()=>{releaseRefreshPending=false;});}
+    }
+    function renderResults(){
+      const map=new Map((results||[]).map(x=>[x.categoryId,x]));
+      $('resultsGrid').innerHTML=categories.map(c=>{const item=map.get(c.id)||{votes:[]};const top=(item.votes||[]).filter(v=>v.count===Math.max(0,...(item.votes||[]).map(x=>x.count))&&v.count>0);const winners=top.length?top.map(t=>h(t.name)).join(' & '):'Sem votos';const n=top.length?top[0].count:0;return `<article class="result"><span class="pill">${h(c.group)}</span><h3>${h(c.name)}</h3><div class="winner">${winners}</div><div class="votes">${n?`${n} voto(s) na liderança por vencedor`:'Nenhum voto nesta categoria'}</div></article>`}).join('');
+    }
+    function renderAdminStats(){
+      const root=$('adminStats');if(!session||!session.isAdmin||!root)return;
+      if(!adminStats){root.innerHTML='<div class="loading">Carregando apuração...</div>';return;}
+      const total=Number(adminStats.totalBallots||0), max=Number(adminStats.totalStudents||0), pct=max?Math.round(total/max*100):0;
+      const phases=adminStats.phaseCounts||{general:0,final:0};
+      const phaseName=adminStats.phase==='general'?'Votação geral':adminStats.phase==='final'?'Final por categoria':adminStats.phase==='closed'?'Encerrada':'Não iniciada';
+      root.innerHTML=`<div class="stats-grid"><div class="stat"><strong>${total}</strong><span>Cédulas nesta fase</span></div><div class="stat"><strong>${max}</strong><span>Participantes cadastrados</span></div><div class="stat"><strong>${pct}%</strong><span>Participação nesta fase</span></div></div><div class="notice">Fase: ${phaseName}. Cédulas na votação geral: ${Number(phases.general||0)} · Cédulas na final: ${Number(phases.final||0)}. ${status&&status.deadline?`Prazo final: ${new Date(status.deadline).toLocaleString('pt-BR')}`:'Contagem ainda não iniciada.'} ${status&&status.resultsReleased?'Resultados públicos liberados.':'Os totais abaixo são restritos à ADM até o fim do prazo.'}</div><h3 class="section-title" style="font-size:20px">Apuração ao vivo — ${adminStats.tallyPhase==='final'?'final por categoria':'votação geral'}</h3><div class="tally-list">${categories.map(c=>{const item=(adminStats.results||[]).find(x=>x.categoryId===c.id)||{votes:[]};const sorted=(item.votes||[]).slice().sort((a,b)=>b.count-a.count||a.name.localeCompare(b.name,'pt-BR')).filter(x=>x.count>0);return `<div class="tally-card"><h3>${h(c.name)}</h3>${sorted.length?sorted.slice(0,5).map(v=>`<div class="tally-row"><span>${h(v.name)}</span><span class="count">${v.count}</span></div>`).join(''):'<div class="tally-row"><span>Sem votos ainda</span><span class="count">0</span></div>'}</div>`}).join('')}</div>`;
+    }
+    function startPolling(){if(polling)clearInterval(polling);if(ticker)clearInterval(ticker);polling=setInterval(async()=>{if(!session)return;try{await refreshAll(false)}catch(e){/* polling quietly retries */}},20000);ticker=setInterval(updateTimer,1000);}
+    async function boot(){
+      if(!configReady){$('loginButton').disabled=true;message($('loginMessage'),'O site está pronto, mas falta a configuração do Supabase. Siga o LEIA-ME do projeto e preencha docs/config.js.','error');return;}
+      try{const saved=sessionStorage.getItem('firstA_session');if(!saved)return;session=JSON.parse(saved);$('loginView').classList.add('hidden');$('dashboardView').classList.remove('hidden');await refreshAll(true);startPolling();}
+      catch(err){sessionStorage.removeItem('firstA_session');session=null;$('dashboardView').classList.add('hidden');$('loginView').classList.remove('hidden');message($('loginMessage'),'Sua sessão expirou. Entre novamente.','error');}
+    }
+    boot();
+  })();
+  </script>
+</body>
+</html>
