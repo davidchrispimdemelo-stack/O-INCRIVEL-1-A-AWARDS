@@ -8,6 +8,10 @@ O projeto usa uma contagem total de 20 dias, controlada pelo servidor:
 
 O desempate pela quarta vaga usa ordem alfabética. Avise a turma antes da votação.
 
+## Sistema de pontos por preferência
+
+Em cada categoria, cada participante pode indicar até duas pessoas diferentes: a primeira opção vale **1 ponto** e a segunda vale **0,5 ponto**. É permitido votar apenas na primeira opção ou pular a categoria; não é permitido preencher apenas a segunda opção nem escolher a mesma pessoa nas duas posições. A classificação e os quatro finalistas são definidos pela soma dos pontos. Cédulas antigas, que só têm uma pessoa por categoria, continuam sendo lidas como primeira opção (1 ponto).
+
 ## Como publicar mudanças
 
 1. Atualize os arquivos do projeto no seu repositório local.

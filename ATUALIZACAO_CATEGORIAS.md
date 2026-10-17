@@ -2,9 +2,13 @@
 
 A lista foi reduzida de 28 para 21 categorias. A página pública da votação (`docs/index.html`) e a Edge Function (`supabase/functions/awards-api/index.ts`) foram atualizadas para usar os mesmos IDs.
 
+## Sistema de pontos por preferência
+
+Em cada categoria, cada participante pode indicar até duas pessoas diferentes: a primeira opção vale **1 ponto** e a segunda vale **0,5 ponto**. É permitido votar apenas na primeira opção ou pular a categoria; não é permitido preencher apenas a segunda opção nem escolher a mesma pessoa nas duas posições. A classificação e os quatro finalistas são definidos pela soma dos pontos. Cédulas antigas, que só têm uma pessoa por categoria, continuam sendo lidas como primeira opção (1 ponto).
+
 ## O que mudou
 
-- Na atualização original, as duas categorias centradas em beleza/feiúra foram substituídas por **Mais Icônico(a)** e **Mais Gente Boa**. Posteriormente, **Mais Icônico(a)** foi renomeada para **Mais Bonito(a)**.
+- As duas categorias centradas em beleza/feiúra foram substituídas por **Mais Icônico(a)** e **Mais Gente Boa**, para manter o tom de brincadeira sem classificar a aparência dos colegas.
 - “Mais Mão de Vaca” agora tem descrição coerente com a expressão: economizar bastante.
 - Os grupos foram reorganizados em “Polêmicas & sem filtro”, “Vida social & comportamento” e “Clássicos & momentos memoráveis”.
 

@@ -39,9 +39,9 @@ PARTE 1 — Deixar os arquivos organizados
 
 Passo 1. Baixar o projeto
 
-1. Baixe o arquivo primeiro_a_awards_com_recados_individuais.zip que veio nesta conversa.
+1. Baixe o arquivo primeiro_a_awards_voto_preferencial.zip que veio nesta conversa.
 2. No computador, abra a pasta Downloads.
-3. Procure primeiro_a_awards_com_recados_individuais.zip.
+3. Procure primeiro_a_awards_voto_preferencial.zip.
 4. Clique nele com o botão direito do mouse.
 5. Escolha Extrair tudo….
 6. Clique em Extrair. O Windows vai criar uma pasta com os arquivos.
@@ -511,7 +511,7 @@ Passo 26. Iniciar os 20 dias
 O que acontece depois?
 
 - Dias 1–10: votação geral.
-- No 11º dia: o site passa automaticamente para a final e mostra os quatro mais votados por categoria.
+- No 11º dia: o site passa automaticamente para a final e mostra os quatro com maior pontuação em cada categoria.
 - Dias 11–20: os alunos enviam uma nova cédula, agora escolhendo entre os quatro finalistas de cada categoria.
 - Fim do 20º dia: o site fecha os votos e libera os resultados da final para quem entrar com o login.
 
@@ -600,3 +600,7 @@ Links oficiais úteis
 - Python para Windows: <https://www.python.org/downloads/windows/>
 - GitHub Desktop: <https://desktop.github.com/>
 - GitHub Pages: <https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site>
+
+## Sistema de pontos por preferência
+
+Em cada categoria, cada participante pode indicar até duas pessoas diferentes: a primeira opção vale **1 ponto** e a segunda vale **0,5 ponto**. É permitido votar apenas na primeira opção ou pular a categoria; não é permitido preencher apenas a segunda opção nem escolher a mesma pessoa nas duas posições. A classificação e os quatro finalistas são definidos pela soma dos pontos. Cédulas antigas, que só têm uma pessoa por categoria, continuam sendo lidas como primeira opção (1 ponto).

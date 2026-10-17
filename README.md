@@ -4,6 +4,10 @@ Site de votação em duas fases para a turma.
 
 **Siga primeiro `GUIA_COMPLETO.md`, do começo ao fim.** O tutorial explica com passos simples como preparar o computador, criar o projeto Supabase, importar a lista privada, publicar a API e colocar o site no ar.
 
+## Sistema de pontos por preferência
+
+Em cada categoria, cada participante pode indicar até duas pessoas diferentes: a primeira opção vale **1 ponto** e a segunda vale **0,5 ponto**. É permitido votar apenas na primeira opção ou pular a categoria; não é permitido preencher apenas a segunda opção nem escolher a mesma pessoa nas duas posições. A classificação e os quatro finalistas são definidos pela soma dos pontos. Cédulas antigas, que só têm uma pessoa por categoria, continuam sendo lidas como primeira opção (1 ponto).
+
 ## Regras da votação
 
 - Dias 1–10: votação geral.
@@ -26,3 +30,6 @@ O site usa 21 categorias. A lista da página (`docs/index.html`) e a lista valid
 Peça autorização à escola ou a um responsável pela turma: o projeto usa dados escolares de menores. GitHub Pages é público. Nunca publique `private/roster.json`, `private/recados_individuais.sql`, segredos do Supabase ou código de administrador. Os recados são carregados pelo servidor e cada aluno autenticado recebe apenas o próprio recado. A chave pública em `docs/config.js` é a única chave de API que pode ficar no navegador.
 
 O site ainda precisa ser configurado na sua própria conta Supabase e publicado. Para ativar os recados, execute novamente `supabase/schema.sql`, importe a lista da turma, execute `private/recados_individuais.sql` no SQL Editor do Supabase e publique novamente a Edge Function `awards-api`. Baixar os arquivos não os coloca online automaticamente.
+
+
+Atualização de interface e compatibilidade: consulte `GUIA_COMPATIBILIDADE_E_DEPLOY.md`.

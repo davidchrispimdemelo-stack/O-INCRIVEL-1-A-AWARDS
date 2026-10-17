@@ -10,7 +10,7 @@ const ADMIN_NAME = "david chrispim de melo";
 const DAY_MS = 24 * 60 * 60 * 1000;
 
 const categories = [
-  { id: "iconico", name: "Mais Bonito(a)" },
+  { id: "iconico", name: "Mais Icônico(a)" },
   { id: "mais_fofoqueiro", name: "Mais Fofoqueiro(a)" },
   { id: "mais_sem_filtro", name: "Mais Sem Filtro" },
   { id: "mais_dramatico", name: "Mais Dramático(a)" },
@@ -135,11 +135,21 @@ async function getAggregate(phase: "general" | "final" | null = null) {
     counts.set(category.id, new Map(people.map((person: any) => [person.id, 0] as [string, number])));
   }
   for (const ballot of ballots) {
-    const votes = ballot.votes && typeof ballot.votes === "object" ? ballot.votes as Record<string, string> : {};
-    for (const [categoryId, candidateId] of Object.entries(votes)) {
-      if (!categoryIds.has(categoryId) || typeof candidateId !== "string" || !names.has(candidateId)) continue;
+    const votes = ballot.votes && typeof ballot.votes === "object" ? ballot.votes as Record<string, unknown> : {};
+    for (const [categoryId, selection] of Object.entries(votes)) {
+      if (!categoryIds.has(categoryId)) continue;
       const tally = counts.get(categoryId)!;
-      tally.set(candidateId, (tally.get(candidateId) ?? 0) + 1);
+      // Compatibilidade: cédulas antigas guardavam apenas um ID por categoria (1 ponto).
+      if (typeof selection === "string") {
+        if (names.has(selection)) tally.set(selection, (tally.get(selection) ?? 0) + 1);
+        continue;
+      }
+      if (!selection || typeof selection !== "object" || Array.isArray(selection)) continue;
+      const ranked = selection as Record<string, unknown>;
+      const first = typeof ranked.first === "string" ? ranked.first : null;
+      const second = typeof ranked.second === "string" ? ranked.second : null;
+      if (first && names.has(first)) tally.set(first, (tally.get(first) ?? 0) + 1);
+      if (second && names.has(second) && second !== first) tally.set(second, (tally.get(second) ?? 0) + 0.5);
     }
   }
   const results = categories.map((category) => ({
@@ -288,25 +298,53 @@ Deno.serve(async (req: Request) => {
       if (!rawVotes || typeof rawVotes !== "object" || Array.isArray(rawVotes)) return json({ error: "Cédula de votação inválida." }, 400);
       const entries = Object.entries(rawVotes as Record<string, unknown>);
       if (entries.length < 1) return json({ error: "Escolha ao menos uma categoria." }, 400);
-      if (entries.some(([cat, candidate]) => !categoryIds.has(cat) || typeof candidate !== "string")) return json({ error: "Há uma escolha inválida na cédula." }, 400);
-      const candidateIds = Array.from(new Set(entries.map(([, candidate]) => candidate as string)));
+
+      const normalizedVotes: Record<string, { first: string | null; second: string | null }> = {};
+      for (const [categoryId, selection] of entries) {
+        if (!categoryIds.has(categoryId)) {
+          return json({ error: `A categoria "${categoryId}" ainda não é reconhecida pelo servidor. A página e o servidor estão em versões diferentes: publique a função awards-api atualizada e recarregue o site.` }, 400);
+        }
+        // Aceita temporariamente cédulas antigas, que armazenavam apenas uma pessoa por categoria.
+        if (typeof selection === "string") {
+          if (!selection) return json({ error: "Uma escolha da cédula está vazia. Atualize a página e tente novamente." }, 400);
+          normalizedVotes[categoryId] = { first: selection, second: null };
+          continue;
+        }
+        if (!selection || typeof selection !== "object" || Array.isArray(selection)) {
+          return json({ error: "Uma categoria contém uma escolha inválida. Atualize a página e tente novamente." }, 400);
+        }
+        const ranked = selection as Record<string, unknown>;
+        if ((ranked.first !== null && ranked.first !== undefined && typeof ranked.first !== "string") ||
+            (ranked.second !== null && ranked.second !== undefined && typeof ranked.second !== "string")) {
+          return json({ error: "Uma das opções está em formato inválido. Atualize a página e tente novamente." }, 400);
+        }
+        const first = typeof ranked.first === "string" && ranked.first.trim() ? ranked.first : null;
+        const second = typeof ranked.second === "string" && ranked.second.trim() ? ranked.second : null;
+        if (!first && !second) return json({ error: "Uma categoria enviada não tem opções selecionadas. Atualize a página e tente novamente." }, 400);
+        if (second && !first) return json({ error: "Escolha a primeira opção antes da segunda. A segunda opção vale meio ponto." }, 400);
+        if (first && second && first === second) return json({ error: "Escolha duas pessoas diferentes em cada categoria." }, 400);
+        normalizedVotes[categoryId] = { first, second };
+      }
+
+      const candidateIds = Array.from(new Set(Object.values(normalizedVotes).flatMap((selection) => [selection.first, selection.second]).filter((id): id is string => Boolean(id))));
       // Validação no servidor: não é possível contornar a interface para votar em si mesmo.
       if (candidateIds.includes(session.sid)) return json({ error: "Você não pode votar em si mesmo(a). Escolha outra pessoa nessa categoria." }, 400);
       const { data: validCandidates, error: candidatesError } = await supabase.from("students").select("id").in("id", candidateIds);
       if (candidatesError) throw candidatesError;
-      const validIds = new Set((validCandidates ?? []).map((s: any) => s.id));
+      const validIds = new Set((validCandidates ?? []).map((student: any) => String(student.id)));
       if (candidateIds.some((id) => !validIds.has(id))) return json({ error: "Um ou mais indicados não são válidos." }, 400);
       if (phase === "final") {
         const finalists = await getFinalistsByCategory();
-        for (const [categoryId, candidateId] of entries as Array<[string, string]>) {
+        for (const [categoryId, selection] of Object.entries(normalizedVotes)) {
           const allowed = finalists[categoryId] ?? [];
-          if (!allowed.some((person) => person.id === candidateId)) {
-            return json({ error: "Na final, escolha uma das quatro pessoas classificadas em cada categoria. Atualize a página e confira a lista de finalistas." }, 400);
+          for (const candidateId of [selection.first, selection.second].filter((id): id is string => Boolean(id))) {
+            if (!allowed.some((person) => person.id === candidateId)) {
+              return json({ error: "Na final, escolha entre as quatro pessoas classificadas em cada categoria. Atualize a página e confira a lista de finalistas." }, 400);
+            }
           }
         }
       }
-      const votes: Record<string, string> = {};
-      for (const [categoryId, candidateId] of entries) votes[categoryId] = candidateId as string;
+      const votes: Record<string, { first: string | null; second: string | null }> = normalizedVotes;
       const { error } = await supabase.rpc("submit_anonymous_ballot", { p_student_id: session.sid, p_votes: votes, p_phase: phase });
       if (error) {
         const msg = String(error.message ?? "");

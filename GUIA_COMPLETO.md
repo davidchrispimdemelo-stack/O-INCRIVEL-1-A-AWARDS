@@ -4,6 +4,10 @@
 
 > **Antes de começar:** peça autorização à professora, à coordenação ou a um responsável pela turma. O projeto usa nomes e RAs de estudantes. O site do GitHub Pages fica público na internet. O arquivo com os RAs nunca pode ser publicado.
 
+## Sistema de pontos por preferência
+
+Em cada categoria, cada participante pode indicar até duas pessoas diferentes: a primeira opção vale **1 ponto** e a segunda vale **0,5 ponto**. É permitido votar apenas na primeira opção ou pular a categoria; não é permitido preencher apenas a segunda opção nem escolher a mesma pessoa nas duas posições. A classificação e os quatro finalistas são definidos pela soma dos pontos. Cédulas antigas, que só têm uma pessoa por categoria, continuam sendo lidas como primeira opção (1 ponto).
+
 ## O que você vai montar
 
 Pense no projeto como quatro peças:
@@ -39,9 +43,9 @@ Se houver empate na quarta vaga da primeira fase, o sistema usa a ordem alfabét
 
 ## Passo 1. Baixar o projeto
 
-1. Baixe o arquivo `primeiro_a_awards_com_recados_individuais.zip` que veio nesta conversa.
+1. Baixe o arquivo `primeiro_a_awards_voto_preferencial.zip` que veio nesta conversa.
 2. No computador, abra a pasta **Downloads**.
-3. Procure `primeiro_a_awards_com_recados_individuais.zip`.
+3. Procure `primeiro_a_awards_voto_preferencial.zip`.
 4. Clique nele com o botão direito do mouse.
 5. Escolha **Extrair tudo…**.
 6. Clique em **Extrair**. O Windows vai criar uma pasta com os arquivos.
